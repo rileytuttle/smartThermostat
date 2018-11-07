@@ -12,5 +12,6 @@
     <!-- display current temp
                  scheduled temp and option to set new temp -->
         $temp = shell_exec("python -c 'from thermostatfunctions import getTemp; getTemp()'")
+        <?php echo '<p>Hello World</p>'; ?> 
     </body>
 </html>
