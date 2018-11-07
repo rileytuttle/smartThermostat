@@ -2,14 +2,18 @@
 #thermostat on
 
 import RPi.GPIO as GPIO
+import Adafruit_DHT
 thermostatPin = 17
-tempPin = 18
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(thermostatPin, GPIO.OUT)
-GPIO.setup(tempPin, GPIO.IN)
+tempSensor = Adafruit_DHT22
+tempPin = 18
+
 
 def getTemp():
-    return int(GPIO.input(tempPin))
+    #probably more difficult than this
+    humidity, temperature = Adafruit_DHT(tempSensor, tempPin)
+    return temperature
 
 def setTemp(desiredTemp):
     curTemp = getTemp()

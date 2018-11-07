@@ -11,5 +11,6 @@
     <!-- On/Off button's picture -->
     <!-- display current temp
                  scheduled temp and option to set new temp -->
+        $temp = shell_exec("python -c 'from thermostatfunctions import getTemp; getTemp()'")
     </body>
 </html>
