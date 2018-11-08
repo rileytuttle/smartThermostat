@@ -8,9 +8,14 @@ elif [[ $# = 1 ]]; then
   elif [ $1 = "off" ]; then
     python thermostatOff.py
   else
-    echo "invalid argument"
+    re='^[0-9]+$'
+    if ! [[ $1 =~ $re ]] ; then
+      echo "error: Not a number" >&2; exit 1
+    else
+      python -c'import thermostatFunctions as thermostat; thermostat.setTemp($1)'
+    fi
   fi
-elif [[ $# = 2 ]]; then
+elif [[ $# = 2 ]] ; then
   echo "2 arguments"
 else
   echo "invalid arguments"
