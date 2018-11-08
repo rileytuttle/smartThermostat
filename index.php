@@ -11,6 +11,10 @@
     <!-- display current temp
                  scheduled temp and option to set new temp -->
         <!-- $temp = shell_exec("python -c 'from thermostatfunctions import getTemp; getTemp()'") -->
-	<?php echo "<p>Hello World</p>"; ?>
+    	<?php echo "<p>current temp is </p>"; ?>
+      <form action="" method="post">
+        set temp to: <input type="number" name="newTemp" min="50" max="100" step="5"><br>
+        <input type="submit">
+      </form>
     </body>
 </html>

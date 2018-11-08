@@ -41,4 +41,4 @@ while True:
         f=open("schedule.txt","r")
         lineList=f.readlines()
         setTemp(str(lineList[ticID]))
-    time.sleep(.5) #make function to sleep for 5 minutes
+    time.sleep(5*60) #make function to sleep for (5*60 seconds) 5 minutes

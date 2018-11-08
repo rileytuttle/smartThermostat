@@ -19,6 +19,6 @@ def setTemp(desiredTemp):
     curTemp = getTemp()
     if desiredTemp > curTemp:
         GPIO.output(thermostatPin, GPIO.HIGH)
-    else
+    else:
         GPIO.output(thermostatPin, GPIO.LOW)
     return
