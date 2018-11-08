@@ -16,5 +16,12 @@
         set temp to: <input type="number" name="newTemp" min="50" max="100" step="5"><br>
         <input type="submit">
       </form>
+      <?php
+        if(isset($_POST["newTemp"])) {
+         echo $_POST["newTemp"]; 
+	 // shell_exec("python -c'import thermostatFunctions as thermostat; thermostat.setTemp($_POST["newTemp"])'"
+	 $_POST=array();
+	}
+	?>
     </body>
 </html>
