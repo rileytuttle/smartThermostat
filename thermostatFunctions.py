@@ -10,14 +10,14 @@ class thermostat():
 	sensor = 22
 
 	def getTemp():
-    		#probably more difficult than this
-    		humidity, temperature = Adafruit_DHT(sensor, tempPin)
-    		return temperature
+		#probably more difficult than this
+		humidity, temperature = Adafruit_DHT(sensor, tempPin)
+		return temperature
 
-	def setTemp(desiredTemp):
-    		curTemp = getTemp()
-    		if desiredTemp > curTemp:
-        	GPIO.output(thermostatPin, GPIO.HIGH)
-    	else:
-        	GPIO.output(thermostatPin, GPIO.LOW)
-   		return
+		def setTemp(desiredTemp):
+			curTemp = getTemp()
+			if desiredTemp > curTemp:
+				GPIO.output(thermostatPin, GPIO.HIGH)
+			else:
+				GPIO.output(thermostatPin, GPIO.LOW)
+				return
