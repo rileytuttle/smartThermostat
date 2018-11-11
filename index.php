@@ -24,10 +24,19 @@
         <input type="submit">
       </form>
       <?php
-        if(isset($_POST["newTemp"])) {
-         echo $_POST["newTemp"]; 
-	 // shell_exec("python -c'import thermostatFunctions as thermostat; thermostat.setTemp($_POST["newTemp"])'"
-	 $_POST=array();
+	//$command = "sudo python -c'from thermostatFunctions import *; setTemp($_POST["newTemp"])' 2>&1";
+        //echo $command;
+	if(isset($_POST["newTemp"])) {
+        	echo "setting temp to $_POST[newTemp]";
+	 	echo "<br>";
+		$command="sudo python -c'from thermostatFunctions import *; setTemp($_POST[newTemp])' 2>&1";
+		//echo $command;
+		//echo "<br>";
+	 //$command = "sudo python -c'from thermostatFunctions import *; setTemp($_POST["newTemp"])' 2>&1";
+	 //echo $command
+	 	$output=shell_exec($command);
+	 	echo "$output";
+		$_POST=array();
 	}
 	?>
     </body>
