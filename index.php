@@ -10,8 +10,15 @@
     <!-- On/Off button's picture -->
     <!-- display current temp
                  scheduled temp and option to set new temp -->
-        <!-- $temp = shell_exec("python -c 'from thermostatfunctions import getTemp; getTemp()'") -->
-    	<?php echo "<p>current temp is </p>"; ?>
+        <?php
+	//$command = escapeshellcmd('python -c'from thermostatFunctions import getTemp; temp=getTemp(); print(temp)'2>&1');
+	$command = "sudo python -c'from thermostatFunctions import getTemp; temp=getTemp(); print(temp)' 2>&1";
+	//echo "$command";
+	//echo "<br>";
+	$temp = shell_exec($command);
+	echo "The current temp is $temp deg";
+	//echo "current temp is $temp";
+	?>
       <form action="" method="post">
         set temp to: <input type="number" name="newTemp" min="50" max="100" step="5"><br>
         <input type="submit">
