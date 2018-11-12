@@ -11,6 +11,10 @@ sensor = 22
 def getTemp():
 	humidity, temperature = Adafruit_DHT.read_retry(sensor, tempPin)
 	return temperature*1.8+32
+def getState():
+	state = GPIO.input(thermostatPin)
+	print(state)
+	return state
 def setTemp(desiredTemp):
 	curTemp = getTemp()
 	if desiredTemp > curTemp:

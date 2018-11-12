@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Raspberry Pi Gpio</title>
+        <title>Thermostat</title>
     </head>
     <body>
     <!-- On/Off button's picture -->
@@ -17,7 +17,14 @@
 	//echo "<br>";
 	$temp = shell_exec($command);
 	echo "The current temp is $temp deg";
-	//echo "current temp is $temp";
+	echo "<br>";
+	$command = "sudo python -c'from thermostatFunctions import getState; temp=getState(); print(temp)' 2>&1";
+	$state = shell_exec($command);
+	if($state == 1){
+		echo "thermostat is currently on";
+	} else {
+		echo "thermostat is currently off";
+	}
 	?>
       <form action="" method="post">
         set temp to: <input type="number" name="newTemp" min="50" max="100" step="5"><br>
