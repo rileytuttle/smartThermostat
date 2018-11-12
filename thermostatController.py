@@ -14,11 +14,7 @@
 
 import time
 import datetime
-import thermostatFunctions as thermostat
-
-
-#def your_function():
-#    print("Hello, World")
+from thermostatFunctions import *
 
 TICSIZE = 5
 
@@ -40,5 +36,5 @@ while True:
         ticID = int(secsSince/60/TICSIZE)
         f=open("schedule.txt","r")
         lineList=f.readlines()
-        setTemp(str(lineList[ticID]))
+        setTemp(int(lineList[ticID]))
     time.sleep(5*60) #make function to sleep for (5*60 seconds) 5 minutes
