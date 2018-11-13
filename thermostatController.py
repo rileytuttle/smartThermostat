@@ -16,7 +16,15 @@ import time
 import datetime
 from thermostatFunctions import *
 
-TICSIZE = 5
+TICSIZE = 20
+
+
+def getTic():
+	now = datetime.datetime.now()
+	midnight = now.replace(hour=0,minute=0,second=0,microsecond=0)
+	secsSince = (now-midnight).seconds
+	ticID = int(secsSince/60/TICSIZE)
+	return ticID	
 
 while True:
     #read first line of schedule
@@ -30,11 +38,13 @@ while True:
         f.close()
     else:
         #get time and convert to number of 5 minute intervals since midnight
-        now = datetime.datetime.now()
-        midnight = now.replace(hour=0,minute=0,second=0,microsecond=0)
-        secsSince = (now-midnight).seconds
-        ticID = int(secsSince/60/TICSIZE)
-        f=open("schedule.txt","r")
+        #now = datetime.datetime.now()
+        #midnight = now.replace(hour=0,minute=0,second=0,microsecond=0)
+        #secsSince = (now-midnight).seconds
+        #ticID = int(secsSince/60/TICSIZE)
+        ticID = getTic()
+	f=open("schedule.txt","r")
         lineList=f.readlines()
         setTemp(int(lineList[ticID]))
-    time.sleep(5*60) #make function to sleep for (5*60 seconds) 5 minutes
+    time.sleep(TICSIZE*60) #make function to sleep for (5*60 seconds) 5 minutes
+

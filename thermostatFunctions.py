@@ -13,8 +13,11 @@ def getTemp():
 	return temperature*1.8+32
 def getState():
 	state = GPIO.input(thermostatPin)
-	print(state)
+	#print(state)
 	return state
+def setState(state):
+	GPIO.output(thermostatPin, state)
+	return
 def setTemp(desiredTemp):
 	curTemp = getTemp()
 	if desiredTemp > curTemp:
