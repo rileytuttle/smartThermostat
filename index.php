@@ -13,6 +13,7 @@
         <?php
 	//$command = escapeshellcmd('python -c'from thermostatFunctions import getTemp; temp=getTemp(); print(temp)'2>&1');
 	$command = "sudo python -c'from thermostatFunctions import getTemp; temp=getTemp(); print(temp)' 2>&1";
+	
 	//echo "$command";
 	//echo "<br>";
 	$temp = shell_exec($command);
@@ -36,7 +37,8 @@
 	if(isset($_POST["newTemp"])) {
         	echo "setting temp to $_POST[newTemp]";
 	 	echo "<br>";
-		$command="sudo python -c'from thermostatFunctions import *; setTemp($_POST[newTemp])' 2>&1";
+		//$command="sudo python -c'from thermostatFunctions import *; setTemp($_POST[newTemp])' 2>&1";
+		$command = "sudo ./setTemp.sh $_POST[newTemp]";
 		//echo $command;
 		//echo "<br>";
 	 //$command = "sudo python -c'from thermostatFunctions import *; setTemp($_POST["newTemp"])' 2>&1";
