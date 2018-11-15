@@ -1,0 +1,4 @@
+make sure makeschedule doesnt write to larger indexes than are avaiable
+first run wc -l schedule.txt to get line count and then mod tic id end bythis number
+
+figure out where all those 14scame from 
