@@ -16,7 +16,7 @@
 	
 	//echo "$command";
 	//echo "<br>";
-	$temp = shell_exec($command);
+	$temp = shell_exec($command)*9/5+32;
 	echo "The current temp is $temp deg";
 	echo "<br>";
 	$command = "sudo python -c'from thermostatFunctions import getState; temp=getState(); print(temp)' 2>&1";
@@ -38,14 +38,15 @@
         	echo "setting temp to $_POST[newTemp]";
 	 	echo "<br>";
 		//$command="sudo python -c'from thermostatFunctions import *; setTemp($_POST[newTemp])' 2>&1";
-		$command = "sudo ./setTemp.sh $_POST[newTemp]";
+		$celsius=($_POST[newTemp]-32)*5/9;
+		$command = "sudo ./setTemp.sh $celsius";
 		//echo $command;
 		//echo "<br>";
 	 //$command = "sudo python -c'from thermostatFunctions import *; setTemp($_POST["newTemp"])' 2>&1";
 	 //echo $command
 	 	$output=shell_exec($command);
 	 	echo "$output";
-		$_POST=array();
+		$_POST[newTemp]=array();
 	}
 	?>
     </body>
